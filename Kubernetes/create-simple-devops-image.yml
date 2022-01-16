@@ -1,0 +1,13 @@
+---
+- hosts: kubernetes
+  become: true
+
+  tasks:
+  - name: create docker image using jar file
+    command: docker build -t InstagramScraper:latest .
+    args:
+      chdir: /home/ansadmin/InstagramScraper
+
+  - name: create tag to image
+    command: docker tag InstagramScraper elin/InstagramScraper
+
